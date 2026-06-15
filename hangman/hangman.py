@@ -1,47 +1,49 @@
 import random
-from words import words
-import string
+from words import word_list
+from hangman_art import stages
 
+lives = 6
+print("Welcome to Hangman!")
 
-def get_valid_word(wordss):
-    word = random.choice(wordss)
-    while '-' in word or ' ' in word:
-        word = random.choice(wordss)
+chosen_word = random.choice(word_list)
 
-    return word.upper()
+placeholder = ""
+for position in range(len(chosen_word)):
+    placeholder += "_"
+print("Word to guess: ",placeholder)
 
-def hangman():
-    word = get_valid_word(words)
-    word_letters = set(word)
-    alphabet = set(string.ascii_uppercase)
-    used_letters = set()
+game_over = False
+correct_letters = []
 
-    lives = 6
+while not game_over:
+    print(f"------ {lives}/6 LIVES LEFT ------")
+    guess = input("Guess a letter: ").lower()
 
-    while len(word_letters) > 0 and lives > 0:
-        print("You have", lives, "lives left and you have used these letters: ", " ".join(used_letters))
+    if guess in correct_letters:
+        print(f"You've already guessed {guess}, try again.")
 
-        word_list = [letter if letter in used_letters else '-' for letter in word]
-        print("Current word: ", " ".join(word_list))
+    display = ""
 
-        user_letter = input("Guess a letter: ").upper()
-        if user_letter in alphabet - used_letters:
-            used_letters.add(user_letter)
-            if user_letter in word_letters:
-                word_letters.remove(user_letter)
-            else:
-                lives = lives - 1
-                print("Letter is not in word")
-
-        elif user_letter in used_letters:
-            print("You have already guessed that letter")
-
+    for letter in chosen_word:
+        if letter == guess:
+            display += letter
+            correct_letters.append(letter)
+        elif letter in correct_letters:
+            display += letter
         else:
-            print("Invalid letter")
+            display += "_"
 
-    if lives == 0:
-        print("You died, sorry, The word was", word)
-    else:
-        print("You guessed the word ", word, " !!")
+    print("Word to guess: ", display)
 
-hangman()
+    if guess not in chosen_word:
+        lives -= 1
+        print(f"You guessed {guess}, that was not in the word. You lose a life.")
+        if lives == 0:
+            game_over = True
+            print(f"----- IT WAS {chosen_word}! You lose! -----")
+
+    if "_" not in display:
+        game_over = True
+        print("----- You won! -----")
+
+    print(stages[lives])
