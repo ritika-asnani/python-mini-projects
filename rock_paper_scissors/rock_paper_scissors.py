@@ -100,7 +100,9 @@ while user_score < wins_needed and computer_score < wins_needed:
     round_no += 1
 
 print("\n------------------------")
-if user_score == wins_needed:
+if user_choice == 9:
+    pass
+elif user_score == wins_needed:
     print("YOU WON THE GAME!")
 else:
     print("COMPUTER WON THE GAME!")
