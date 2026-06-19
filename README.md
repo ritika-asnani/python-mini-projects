@@ -1,6 +1,6 @@
 # Python Mini Projects
 
-A collection of beginner-friendly Python projects focused on building logic, improving problem-solving skills, and strengthening core programming concepts.
+A collection of Python projects focused on building logic, improving problem-solving skills, and strengthening core programming concepts.
 
 ---
 
@@ -12,4 +12,16 @@ A classic command-line word-guessing game played in the terminal where the playe
 - Random word selection  
 - Input validation  
 - Tracks correct and incorrect guesses  
-- Simple and interactive gameplay  
+- Remaining attempts display  
+
+---
+
+## Rock Paper Scissors
+
+A command-line game played in the terminal where the user competes against the computer by choosing rock, paper, or scissors.
+
+**Features:**
+- Random computer choices  
+- Multiple game modes  
+- Score tracking across rounds  
+- Win, lose, and draw detection  
