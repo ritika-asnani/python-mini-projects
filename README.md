@@ -4,7 +4,7 @@ A collection of Python projects focused on building logic, improving problem-sol
 
 ---
 
-## Hangman Game
+## Hangman
 
 A classic command-line word-guessing game played in the terminal where the player tries to guess a hidden word one letter at a time before running out of attempts.
 
